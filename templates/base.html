@@ -13,6 +13,38 @@
 </head>
 <body>
 
+    <header>
+        <!-- top navbar -->
+         <nav class="nav-extended text-shadow amber darken-4">
+            <div class="nav-wrapper">
+                <a href="{{ url_for ('get_motions') }}" class="brand-logo">Council Votes</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for ('get_motions') }}">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Submit a Motion</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Log Out</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">View by Council/Topic</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <!-- mobile side navbar -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><h4 class="center-align amber-text text-darken-4">Council Votes</h4></li>
+            <li><a href="{{ url_for ('get_motions') }}">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Submit a Motion</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">View by Council/Topic</a></li>
+        </ul>
+    </header>
+
     {% block content %}
     {% endblock %}
 
