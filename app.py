@@ -26,6 +26,31 @@ def get_motions():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        # username check
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        #password match confirmation
+        pass_check_1 = request.form.get("password")
+        pass_check_2 = request.form.get("confirm_password")
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        elif pass_check_1 != pass_check_2:
+            flash("Passwords do not match")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        # updates session cookie with new user
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
     return render_template("register.html")
 
 
