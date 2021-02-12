@@ -104,6 +104,10 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/submit_motion")
+def submit_motion():
+    return render_template("submit_motion.html")
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
