@@ -8,6 +8,53 @@
 
             <div class="row">
                 <div class="input-field col s12">
+                    <i class="fas fa-building prefix amber-text text-darken-4"></i>
+                    <select id="council_name" name="council_name" class="validate" required>
+                    <option value="" disabled selected>Choose a Council</option>
+                    <optgroup label="City Councils">
+                        <option value="Cork City">Cork City Council</option>
+                        <option value="Dublin City">Dublin City Council</option>
+                        <option value="Galway City">Galway City Council</option>
+                    </optgroup>
+                    <optgroup label="City and County Councils">
+                        <option value="Limerick City & County">Limerick City & County Council</option>
+                        <option value="Waterford City and County">Waterford City and County Council</option>
+                    </optgroup>
+                    <optgroup label="County Councils">
+                        <option value="Carlow County">Carlow County Council</option>
+                        <option value="Cavan County">Cavan County Council</option>
+                        <option value="Clare County">Clare County Council</option>
+                        <option value="Cork County">Cork County Council</option>
+                        <option value="Donegal County">Donegal County Council</option>
+                        <option value="Dun Laoghaire / Rathdown">Dun Laoghaire / Rathdown</option>
+                        <option value="Fingal County">Fingal County Council</option>
+                        <option value="Galway County">Galway County Council</option>
+                        <option value="Kerry County">Kerry County Council</option>
+                        <option value="Kildare County">Kildare County Council</option>
+                        <option value="Kilkenny County">Kilkenny County Council</option>
+                        <option value="Laois County">Laois County Council</option>
+                        <option value="Leitrim County">Leitrim County Council</option>
+                        <option value="Longford County">Longford County Council</option>
+                        <option value="Louth County">Louth County Council</option>
+                        <option value="Mayo County">Mayo County Council</option>
+                        <option value="Meath County">Meath County Council</option>
+                        <option value="Monaghan County">Monaghan County Council</option>
+                        <option value="Offaly County">Offaly County Council</option>
+                        <option value="Roscommon County">Roscommon County Council</option>
+                        <option value="Sligo County">Sligo County Council</option>
+                        <option value="South Dublin County">South Dublin County Council</option>
+                        <option value="Tipperary County">Tipperary County Council</option>
+                        <option value="Westmeath County">Westmeath County Council</option>
+                        <option value="Wexford County">Wexford County Council</option>
+                        <option value="Wicklow County">Wicklow County Council</option>                        
+                    </optgroup>
+                    </select>
+                    <label for="council_name">Councils</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix amber-text text-darken-4"></i>
                     <input id="motion_date" name="motion_date" type="text" class="datepicker validate" required>
                     <label for="motion_date">Date of motion</label>
