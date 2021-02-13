@@ -104,8 +104,23 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/submit_motion")
+@app.route("/submit_motion", methods=["GET", "POST"])
 def submit_motion():
+    if request.method == "POST":
+        motion_pass = "on" if request.form.get("motion_pass") else "off"
+        motion = {
+            "motion_category": request.form.get("motion_category"),
+            "motion_text": request.form.get("motion_text"),
+            "motion_pass": motion_pass,
+            "motion_date": request.form.get("motion_date"),
+            "link": request.form.get("link"),
+            "council_name": request.form.get("council_name"),
+            "created_by": session["user"]
+        }
+        mongo.db.motions.insert_one(motion)
+        flash("Motion Submitted")
+        return redirect(url_for("get_motions"))
+
     return render_template("submit_motion.html")
 
 
