@@ -3,7 +3,7 @@
     $('.collapsible').collapsible();
     $('select').formSelect();
     $('.datepicker').datepicker({
-        format: "dd/mm/yyyy",
+        format: "yyyy-mm-dd",
         yearRange: [2000, 2021],
         showClearBtn: true,
         i18n: {

@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_motions")
 def get_motions():
-    motions = mongo.db.motions.find()
+    motions = mongo.db.motions.find().sort("motion_date", -1)
     return render_template("motions.html", motions=motions)
 
 
