@@ -2,7 +2,7 @@
 {% block content%}
     <h3 class="center-align orange-text text-shadow">All Motions</h3>
     <br>
-    <div class="orange-text text-darken-5 grey lighten-3 text-shadow row table-key">
+    <div class="orange-text text-darken-5 grey lighten-3 text-shadow row table-key valign-wrapper">
                 <div class="col s1 center-align"></div>
                 <div class="col s2 center-align"><h5 class="tooltipped" data-position="top" data-tooltip="YYYY-MM-DD">Date of Motion</h5></div>
         
@@ -16,7 +16,7 @@
     <ul class="collapsible">
         {% for motion in motions %}
         <li>
-            <div class="collapsible-header white-text orange darken-1 text-shadow row">
+            <div class="collapsible-header white-text orange darken-1 text-shadow row valign-wrapper">
                 <div class="col s1 center-align"><i class="fas fa-caret-down"></i></div>
                 <div class="col s2 center-align">{{ motion.motion_date }}</div>
                 <div class="col s3 center-align">{{ motion.council_name }}</div>
@@ -31,8 +31,27 @@
             
             </div>
             <div class="collapsible-body">
+                <p><strong>Motion Text:</strong></p>
                 <p>{{ motion.motion_text }}</p>
-                <p>uploaded by: <strong>{{ motion.created_by }}</strong></p>
+                <br>
+                <!-- 3 colums:  uploaded by, edit, delete -->
+                <div class="row under-text valign-wrapper card-panel">
+                    <div class="col s4 center-align">
+                        <p>uploaded by: <strong>{{ motion.created_by }}</strong></p>
+                    </div>
+
+                    <div class="col s4 center-align">
+                        <a class="waves-orange indigo lighten-3 waves-light btn"> <i class="fas fa-edit"></i>  EDIT</a>
+                    </div>
+
+                    <div class="col s4 center-align">
+                        <a class="waves-yellow waves-effect red darken-4 waves-light btn"> <i class="fas fa-trash-alt"></i>  DELETE</a>
+
+                    </div>
+
+                </div>
+
+                
             </div>
             
         </li>
