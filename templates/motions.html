@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% block content%}
 
-    
+    <br>
+    <div class="white-text orange lighten-1 text-shadow row table-key">
+                <div class="col s3 center-align"><h5>Date</h5></div>
+                <div class="col s3 center-align"><h5>Council</h5></div>
+                <div class="col s3 center-align"><h5>Motion Topic</h5></div>
+                <div class="col s3 center-align"><h5>Pass</h5></div>
+            
+            </div> 
+
 
     <ul class="collapsible">
         {% for motion in motions %}
         <li>
             <div class="collapsible-header white-text orange darken-1 text-shadow row">
-                <i class="fas fa-caret-down"></i><div class="col s3 center-align">{{ motion.motion_date }}</div>
+                <div class="col s3 center-align"><i class="fas fa-caret-down"></i>{{ motion.motion_date }}</div>
                 <div class="col s3 center-align">{{ motion.council_name }}</div>
                 <div class="col s3 center-align">{{ motion.motion_category }}</div>
                 <div class="col s3 center-align">
