@@ -36,11 +36,11 @@
                 <!-- 3 colums:  uploaded by, edit, delete -->
                 <div class="row under-text valign-wrapper card-panel">
                     <div class="col s4 center-align">
-                        <p>uploaded by: <strong>{{ motion.created_by }}</strong></p>
+                        <p>Uploaded by: <strong>{{ motion.created_by }}</strong></p>
                     </div>
 
                     <div class="col s4 center-align">
-                        <a class="waves-orange indigo lighten-3 waves-light btn"> <i class="fas fa-edit"></i>  EDIT</a>
+                        <a href="{{ url_for('edit_motion', motion_id=motion._id) }}" class="waves-orange indigo lighten-3 waves-light btn"> <i class="fas fa-edit"></i>  EDIT</a>
                     </div>
 
                     <div class="col s4 center-align">

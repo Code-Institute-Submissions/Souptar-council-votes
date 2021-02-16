@@ -124,6 +124,12 @@ def submit_motion():
     return render_template("submit_motion.html")
 
 
+@app.route("/edit_motion/<motion_id>", methods=["GET", "POST"])
+def edit_motion(motion_id):
+    motion = mongo.db.motions.find_one({"_id": ObjectId(motion_id)})
+    return render_template("edit_motion.html", motion=motion)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
