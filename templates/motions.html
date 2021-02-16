@@ -3,11 +3,11 @@
     <h3 class="center-align ora-text text-shadow">All Motions</h3>
     <br>
     <div class="ora-text bla-bg text-shadow row table-key valign-wrapper">
-                <div class="col s3 center-align"><h4 class="tooltipped" data-position="top" data-tooltip="YYYY-MM-DD">Date</h4></div>
+                <div class="col s3 center-align tooltipped" data-position="top" data-tooltip="YYYY-MM-DD"><h4>Date</h4></div>
         
                 <div class="col s3 center-align"><h4>Council</h4></div>
                 <div class="col s3 center-align"><h4>Motion</h4></div>
-                <div class="col s3 center-align"><h4 class="tooltipped" data-position="top" data-tooltip="Motion Passed / Rejected">Result</h4></div>
+                <div class="col s3 center-align tooltipped" data-position="top" data-tooltip="Motion Passed / Rejected"><h4>Result</h4></div>
             
             </div> 
 
@@ -16,7 +16,8 @@
         {% for motion in motions %}
         <li>
             <div class="collapsible-header #5d0606 orange darken-1 shadow-smaller row valign-wrapper">
-                <div class="col s3 center-align">{{ motion.motion_date }}</div>
+                <i class="fas fa-caret-down"></i>
+                <div class="col s3 center-align dates-left">{{ motion.motion_date }}</div>
                 <div class="col s3 center-align">{{ motion.council_name }}</div>
                 <div class="col s3 center-align">{{ motion.motion_category }}</div>
                 <div class="col s3 center-align"> 
