@@ -144,6 +144,13 @@ def edit_motion(motion_id):
     return render_template("edit_motion.html", motion=motion)
 
 
+@app.route("/delete_motion/<motion_id>")
+def delete_motion(motion_id):
+    mongo.db.motions.remove({"_id": ObjectId(motion_id)})
+    flash("Motion Successfully Deleted")
+    return redirect(url_for("get_motions"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
