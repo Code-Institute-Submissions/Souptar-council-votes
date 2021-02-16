@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content%}
-    <h3 class="center-align orange-text text-shadow">All Motions</h3>
+    <h3 class="center-align ora-text text-shadow">All Motions</h3>
     <br>
-    <div class="orange-text text-darken-5 grey lighten-3 text-shadow row table-key valign-wrapper">
-                <div class="col s1 center-align"></div>
-                <div class="col s2 center-align"><h5 class="tooltipped" data-position="top" data-tooltip="YYYY-MM-DD">Date of Motion</h5></div>
+    <div class="ora-text bla-bg text-shadow row table-key valign-wrapper">
+                <div class="col s3 center-align"><h4 class="tooltipped" data-position="top" data-tooltip="YYYY-MM-DD">Date</h4></div>
         
-                <div class="col s3 center-align"><h5>Council</h5></div>
-                <div class="col s3 center-align"><h5>Motion Topic</h5></div>
-                <div class="col s3 center-align"><h5 class="tooltipped" data-position="top" data-tooltip="Motion Passed / Rejected">Result</h5></div>
+                <div class="col s3 center-align"><h4>Council</h4></div>
+                <div class="col s3 center-align"><h4>Motion</h4></div>
+                <div class="col s3 center-align"><h4 class="tooltipped" data-position="top" data-tooltip="Motion Passed / Rejected">Result</h4></div>
             
             </div> 
 
@@ -16,9 +15,8 @@
     <ul class="collapsible">
         {% for motion in motions %}
         <li>
-            <div class="collapsible-header white-text orange darken-1 text-shadow row valign-wrapper">
-                <div class="col s1 center-align"><i class="fas fa-caret-down"></i></div>
-                <div class="col s2 center-align">{{ motion.motion_date }}</div>
+            <div class="collapsible-header #5d0606 orange darken-1 shadow-smaller row valign-wrapper">
+                <div class="col s3 center-align">{{ motion.motion_date }}</div>
                 <div class="col s3 center-align">{{ motion.council_name }}</div>
                 <div class="col s3 center-align">{{ motion.motion_category }}</div>
                 <div class="col s3 center-align"> 
