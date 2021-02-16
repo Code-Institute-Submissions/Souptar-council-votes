@@ -33,25 +33,42 @@
                 <p><strong>Motion Text:</strong></p>
                 <p>{{ motion.motion_text }}</p>
                 <br>
-                <!-- 3 colums:  uploaded by, edit, delete -->
+                <!-- 3 columns:  1st = "uploaded by"-->
                 <div class="row under-text valign-wrapper card-panel">
                     <div class="col s4 center-align">
                         <p>Uploaded by: <strong>{{ motion.created_by }}</strong></p>
                     </div>
 
-                    <div class="col s4 center-align">
-                        <a href="{{ url_for('edit_motion', motion_id=motion._id) }}" class="waves-orange indigo lighten-3 waves-light btn"> <i class="fas fa-edit"></i>  EDIT</a>
-                    </div>
-
-                    <div class="col s4 center-align">
-                        <a class="waves-yellow waves-effect red darken-4 waves-light btn"> <i class="fas fa-trash-alt"></i>  DELETE</a>
-
-                    </div>
-
+                    <!-- 2nd and 3rd = edit and delete -->
+                    <!-- Shows if correct user is logged in -->
+                    {% if session.user|lower == motion.created_by|lower %}
+                        <div class="col s4 center-align">
+                            <a href="{{ url_for('edit_motion', motion_id=motion._id) }}" class="waves-orange indigo lighten-3 waves-light btn"> <i class="fas fa-edit"></i>  EDIT</a>
+                        </div>
+                        <div class="col s4 center-align">
+                            <a class="waves-yellow waves-effect red darken-4 waves-light btn">
+                                <i class="fas fa-trash-alt"></i>  DELETE
+                            </a>
+                        </div>
+                        <!-- If incorrect user: buttons are greyed out and functionality replaced with tooltip -->
+                    {% else %}
+                        <div class="col s4 center-align tooltipped" data-position="top" 
+                                data-tooltip="Only the user, {{ motion.created_by|capitalize }} may edit this motion.">
+                            <a href="{{ url_for('edit_motion', motion_id=motion._id) }}" class="btn disabled">
+                                <i class="fas fa-edit"></i>  EDIT</a>
+                        </div>
+                        <div class="col s4 center-align tooltipped" data-position="top" data-tooltip="Only the user, {{ motion.created_by|capitalize }} may delete this motion.">
+                            <a class="btn disabled">
+                                <i class="fas fa-trash-alt"></i>  DELETE
+                            </a>
+                        </div>
+                            
+                        </div>
+                    {% endif %}
                 </div>
 
                 
-            </div>
+            
             
         </li>
         {% endfor %}

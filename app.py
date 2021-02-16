@@ -66,11 +66,11 @@ def login():
         if existing_user:
             # hashed pass match check
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
                         request.form.get("username").capitalize()))
-                    return redirect(url_for(
+                return redirect(url_for(
                         "profile", username=session["user"]))
             else:
                 # password incorrext
@@ -126,6 +126,20 @@ def submit_motion():
 
 @app.route("/edit_motion/<motion_id>", methods=["GET", "POST"])
 def edit_motion(motion_id):
+    if request.method == "POST":
+        motion_pass = "on" if request.form.get("motion_pass") else "off"
+        edit = {
+            "motion_category": request.form.get("motion_category"),
+            "motion_text": request.form.get("motion_text"),
+            "motion_pass": motion_pass,
+            "motion_date": request.form.get("motion_date"),
+            "link": request.form.get("link"),
+            "council_name": request.form.get("council_name"),
+            "created_by": session["user"]
+        }
+        mongo.db.motions.update({"_id": ObjectId(motion_id)}, edit)
+        flash("Motion Successfully Edited")
+
     motion = mongo.db.motions.find_one({"_id": ObjectId(motion_id)})
     return render_template("edit_motion.html", motion=motion)
 
