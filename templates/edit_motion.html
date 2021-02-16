@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix amber-text text-darken-4"></i>
-                    <input id="motion_date" name="motion_date" type="text" class="datepicker validate" required>
+                    <input id="motion_date" name="motion_date" type="text" value="{{ motion.motion_date }}" class="datepicker validate" required>
                     <label for="motion_date">Date of motion</label>
                 </div>
             </div>
@@ -19,15 +19,15 @@
                 <div class="input-field col s12">
                     <i class="fas fa-building prefix amber-text text-darken-4"></i>
                     <select id="council_name" name="council_name" class="validate" required>
-                    <option value="" disabled selected>Choose a Council</option>
+                    <option value="" disabled >Choose a Council</option>
                     <optgroup label="City Councils">
                         <option value="Cork City">Cork City Council</option>
                         <option value="Dublin City">Dublin City Council</option>
                         <option value="Galway City">Galway City Council</option>
                     </optgroup>
                     <optgroup label="City and County Councils">
-                        <option value="Limerick City & County">Limerick City & County Council</option>
-                        <option value="Waterford City and County">Waterford City and County Council</option>
+                        <option value="Limerick City/County">Limerick City & County Council</option>
+                        <option value="Waterford City/County">Waterford City and County Council</option>
                     </optgroup>
                     <optgroup label="County Councils">
                         <option value="Carlow County">Carlow County Council</option>
@@ -55,7 +55,8 @@
                         <option value="Tipperary County">Tipperary County Council</option>
                         <option value="Westmeath County">Westmeath County Council</option>
                         <option value="Wexford County">Wexford County Council</option>
-                        <option value="Wicklow County">Wicklow County Council</option>                        
+                        <option value="Wicklow County">Wicklow County Council</option> 
+                        <option value="{{ motion.council_name }}" selected>{{ motion.council_name }}</option>                       
                     </optgroup>
                     </select>
                     <label for="council_name">Councils</label>
@@ -67,7 +68,8 @@
                  <div class="input-field col s12">
                     <i class="fas fa-align-left prefix amber-text text-darken-4"></i>
                     <select id="motion_category" name="motion_category" class="validate" required>
-                        <option value="" disabled selected>Motion Topic</option>
+                        <option value="" disabled >Motion Topic</option>
+                        <option value="{{ motion.motion_category }}" selected>{{ motion.motion_category}}</option>
                         <option value="Arts and Culture">Arts and Culture</option>
                         <option value="Economic Development">Economic Development</option>
                         <option value="Environment">Environment</option>
@@ -80,7 +82,7 @@
                         <option value="Transport">Transport</option>
                         <option value="Waste Management">Waste Management</option>
                     </select>
-                    <label for="motion_category">Materialize Select</label>
+                    <label for="motion_category">Topics</label>
                 </div>
             </div>
 
@@ -90,7 +92,7 @@
                  <div class="input-field col s12">
                     <i class="fas fa-copy prefix amber-text text-darken-4"></i>
                     <textarea id="motion_text" name="motion_text" minlength="5"
-                        maxlength="1500" class="materialize-textarea validate" required></textarea>
+                        maxlength="1500" class="materialize-textarea validate" required>{{ motion.motion_text}}</textarea>
                     <label for="motion_text">Paste the text of the motion here</label>
                 </div>
             </div>
@@ -101,8 +103,12 @@
 					<div class="switch">
                         <i class="fas fa-question prefix amber-text text-darken-4"></i>
 						<label for="motion_pass">
+                            {% if motion.motion_pass == "on" %}
+                                <input type="checkbox" id="motion_pass" name="motion_pass" checked>
+                            {% else %}
                             Motion rejected
-                            <input type="checkbox" id="motion_pass" name="motion_pass">
+                                <input type="checkbox" id="motion_pass" name="motion_pass">
+                            {% endif %}
                             <span class="lever"></span>
                             Motion passed
                         </label>
@@ -114,7 +120,7 @@
             <div class="row">
                  <div class="input-field col s12">
                     <i class="fas fa-link prefix amber-text text-darken-4"></i>
-                    <input id="link" type="url" name="link" minlength="5" maxlength="250" class="validate" required>
+                    <input id="link" type="url" name="link" minlength="5" maxlength="250" class="validate" required value="{{ motion.link }}">
                     <label for="link">Paste the URL to the minutes of the relevant council meeting</label>
                 </div>
             </div>
@@ -122,7 +128,11 @@
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
-                    <button type="submit" class="btn-large amber darken-1 text-shadow">
+                    <!-- cancel button -->
+                    <a href="{{ url_for('get_motions') }}" class="waves-effect deep-orange accent-4 btn-large">
+                        Cancel <i class="fas fa-ban"></i>
+                    </a>
+                    <button type="submit" class="btn-large orange waves-effect waves-green text-shadow">
                         Edit Motion <i class="fas fa-edit right"></i>
                     </button>
                 </div>
