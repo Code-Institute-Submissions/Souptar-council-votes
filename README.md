@@ -11,7 +11,7 @@ Any user can go to the site and see what motions have been uploaded. If a user w
 
 You visit Council Votes right away by clicking
 [here](https://jj-council-votes.herokuapp.com/#)
-<img src='mockups/'></img>
+<img src='mockups/mockup.jpg'></img>
 
 ## Database design
 <img src='mockups/schema.png'></img>
@@ -208,7 +208,7 @@ To inform Heroku on how to run the application and which file runs it the **Proc
 * Inspiration and base code was derived from the Mini Project section of the [Code Institute](https://courses.codeinstitute.net/)
 
 ## Content
-* Almost every city and county council puts their meeting information and minutes online [Cork City](https://www.corkcity.ie/en/council-services/councillors-and-democracy/meetings-of-the-city-council/full-council-meetings/full-council-meetings-minutes/)
+* Almost every city and county council puts their meeting information and minutes online, e.g [Cork City](https://www.corkcity.ie/en/council-services/councillors-and-democracy/meetings-of-the-city-council/full-council-meetings/full-council-meetings-minutes/)
 
 <a name="Ack"></a>
 -   ### Acknowledgements
